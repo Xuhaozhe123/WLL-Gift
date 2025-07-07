@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WLL's Gift-主页面</title>
+    <!-- 添加Google Fonts中文字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Ma+Shan+Zheng&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .shell {
+        width: 100%;
+        position: relative;
+        padding: 80px 0;
+        transition: 0.3s ease 0s;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .shell:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(99, 99, 99, 0.8);
+        content: "";
+    }
+
+    .header {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 80px;
+        position: relative;
+    }
+
+    .title {
+        color: #fff;
+        font-size: 46px;
+        font-weight: normal;
+        font-family: 'Ma Shan Zheng', 'Hanzipen SC', 'Noto Serif SC', serif;
+        margin: 0;
+    }
+
+    .subtitle {
+        font-size: 25px !important;
+        font-weight: normal;
+        font-family: 'Ma Shan Zheng', 'Xingkai SC', 'Noto Serif SC', serif;
+    }
+
+    .timeline {
+        margin: 0 auto;
+        max-width: 1400px;
+        padding: 0 5vw;
+        position: relative;
+    }
+
+    .content-title {
+        font-weight: normal;
+        font-size: 66px;
+        margin: -10px 0 0 0;
+        transition: 0.4s;
+        padding: 0 10px;
+        box-sizing: border-box;
+        color: #fff;
+    }
+
+    .content-desc {
+        margin: 0;
+        font-size: 15px;
+        box-sizing: border-box;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 25px;
+    }
+
+    .timeline:before {
+        position: absolute;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        margin-left: -1px;
+        content: "";
+        background: rgba(255, 255, 255, 0.07);
+    }
+
+    .item {
+        box-sizing: border-box;
+        padding: 40px 0;
+        width: 100%;
+        opacity: 0.3;
+        filter: blur(2px);
+        transition: 0.5s;
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        position: relative;
+        transform: translateY(-80px);
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .item--active {
+        margin-bottom: 40px;
+    }
+
+    .item:before {
+        content: attr(data-text);
+        letter-spacing: 3px;
+        width: 100%;
+        position: absolute;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 28px;
+        font-family: 'Ma Shan Zheng', 'Hanzipen SC', 'Noto Serif SC', serif;
+        font-weight: 700;
+        border-left: 2px solid rgba(255, 255, 255, 0.5);
+        top: 70%;
+        margin-top: -5px;
+        padding-left: 15px;
+        opacity: 0;
+        left: 50%;
+        letter-spacing: 5px;
+    }
+
+    .item:nth-child(even) {
+        justify-content: flex-end;
+    }
+
+    .item:nth-child(even):before {
+        left: auto;
+        right: 50%;
+        text-align: right;
+        padding-left: 0;
+        border-left: none;
+        border-right: 2px solid rgba(255, 255, 255, 0.5);
+        padding-right: 15px;
+    }
+
+    .item--active {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+
+    .item--active::before {
+        top: 50%;
+        transition: 0.3s all 0.2s;
+        opacity: 1;
+    }
+
+    .item--active .content-tile {
+        margin: -50px 0 20px 0;
+    }
+
+    .content {
+        width: 40%;
+    }
+
+    .img {
+        width: 100%;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    .subtitle {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 16px;
+        letter-spacing: 5px;
+        margin: 10px 0 0 0;
+        font-weight: normal;
+    }
+
+    .content-title {
+        margin: 0;
+        font-size: 40px;
+    }
+
+    .footer {
+        padding: 95px 0;
+        text-align: center;
+    }
+
+    .footer a {
+        color: #999;
+        display: inline-block;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .content {
+            width: 60vw;
+        }
+
+        .item:before,
+        .item:nth-child(even):before {
+            left: auto;
+            right: 70vw;
+            width: 20vw;
+            text-align: right;
+            padding-left: 0;
+            font-size: 14px;
+            border-left: none;
+            border-right: 4px solid rgba(255, 255, 255, 0.5);
+            padding-right: 15px;
+        }
+
+        .item {
+            justify-content: flex-end;
+        }
+
+        .timeline:before {
+            right: 75vw;
+            left: auto;
+            width: 4px;
+            /* margin-left: -2px; */
+        }
+    }
+
+    .timeline .item h2 {
+        font-family: 'Ma Shan Zheng', 'Hanzipen SC', 'Noto Serif SC', serif;
+    }
+
+    .timeline .item p {
+        font-family: 'Ma Shan Zheng', 'Hanzipen SC', 'Noto Serif SC', serif;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 32px;
+    }
+</style>
+
+<body>
+    <!-- <audio src="主页面bgm.MP3" autoplay loop></audio> -->
+    <div class="shell" id="shell">
+        <div class="header">
+            <h2 class="title">时间以外的心事</h2>
+            <h3 class="subtitle">WLL专属网站</h3>
+        </div>
+        <div class="timeline">
+            <div class="item" data-text="《前言》">
+                <div class="content">
+                    <a href="WLL's Gift 0内容页面.html" target="_blank"><img src="../images/图片0.jpg" alt="" class="img"></a>
+                    <h2 class="content-title">故事的开始</h2>
+                    <p class="content-desc">
+                        "月光还是少年的月光，九州一色还是李白的霜。"
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="《往事如风，而历历在目》">
+                <div class="content">
+                    <a href="WLL's Gift 1内容页面.html" target="_blank"><img src="../images/图片1.jpg" alt="" class="img"></a>
+                    <h2 class="content-title">2021夏</h2>
+                    <p class="content-desc">
+                        "参天之木，必有其根；怀山之水，必有其源。"
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="《凡是过往，皆为序章》">
+                <div class="content">
+                    <a href="WLL's Gift 2内容页面.html" target="_blank"><img src="../images/图片2.jpg" alt="" class="img"></a>
+                    <h2 class="content-title">2021冬</h2>
+                    <p class="content-desc">
+                        "我将玫瑰藏于身后，爱与不爱我皆身受。至此不与风问归途，故纵马踏花赏自由。"
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="《既见君子，云湖不喜》">
+                <div class="content">
+                    <a href="WLL's Gift 3内容页面.html" target="_blank"><img src="../images/图片3.jpg" alt="" class="img"></a>
+                    <h2 class="content-title">2022春</h2>
+                    <p class="content-desc">
+                        "我偷偷碰了你一下，却不料你如蒲公英散开，此后到处都是你的模样。"
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="《关关难过关关过，前路漫漫亦灿灿》">
+                <div class="content">
+                    <a href="WLL's Gift 4内容页面.html" target="_blank"><img src="../images/图片4.jpg" alt="" class="img"></a>
+                    <h2 class="content-title">2022夏</h2>
+                    <p class="content-desc">
+                        "世间情动，不过盛夏白瓷梅子汤，碎冰碰壁当啷响。"
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="《万事胜意，百无禁忌》">
+                <div class="content">
+                    <a href="WLL's Gift 5内容页面.html" target="_blank"><img src="../images/图片5.jpg" alt="" class="img"></a>
+                    <h2 class="content-title">2022秋</h2>
+                    <p class="content-desc">
+                        "向海风许愿，在山海相见。"
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="《满眼醉意，山河皆你》">
+                <div class="content">
+                    <a href="WLL's Gift 6内容页面.html" target="_blank"><img src="../images/图片6.jpg"" class=" img"></a>
+                    <h2 class="content-title">2022冬</h2>
+                    <p class="content-desc">
+                        克制，再克制，"在吗？"
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="《平安喜乐，顺遂无忧》">
+                <div class="content">
+                    <a href="WLL's Gift 7内容页面.html" target="_blank"><img src="../images/图片7.jpg" alt="" class="img"></a>
+                    <h2 class="content-title">2023春</h2>
+                    <p class="content-desc">
+                        "人们从诗人的字句里，选取自己心爱的意义，但诗句的最终意义是指向你。"
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="《星月与你，皆可珍藏》">
+                <div class="content">
+                    <a href="WLL's Gift 8内容界面.html" target="_blank"><img src="../images/图片8.jpg" alt="" class="img"></a>
+                    <h2 class="content-title">2023夏</h2>
+                    <p class="content-desc">
+                        那月色与暮色之间，你是第三种绝色；
+                        与我而言，日月星辉之间，你是第四种难得。
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="《后记》">
+                <div class="content">
+                    <a href="WLL's Gift 9内容页面.html" target="_blank"><img src="../images/图片9.jpg" alt="" class="img"></a>
+                    <h2 class="content-title">未完待续</h2>
+                    <p class="content-desc">
+                        "比起未来可期，也许如约而至会更浪漫。"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/jquery-3.1.1.js"></script>
+    <script>
+        $.fn.timeline = function () {
+            let conf = {
+                id: $(this),
+                item: $(this).find(".item"),
+                activeClass: "item--active",
+                img: ".img"
+            };
+            let itemLength = conf.item.length;
+            const onScroll = () => {
+                let max, min;
+                let pos = window.scrollY;
+                conf.item.each(function (i) {
+                    const { offsetHeight: h, offsetTop: top } = this;
+                    min = top;
+                    max = h + top;
+                    let tg;
+                    if (i == itemLength - 2 && pos > min + h / 2) tg = conf.item.last();
+                    else if (pos <= max - 10 && pos >= min) tg = $(this);
+                    if (!tg) return;
+                    conf.item.removeClass(conf.activeClass);
+                    conf.id.css("background-image", `url(${tg.find(conf.img).attr("src")})`);
+                    tg.addClass(conf.activeClass);
+
+
+                });
+            }
+            onScroll();
+            $(window).scroll(onScroll);
+
+        };
+        $("#shell").timeline();
+    </script>
+</body>
+
+</html>

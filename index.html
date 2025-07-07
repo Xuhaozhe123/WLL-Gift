@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WLL's Gift-登录</title>
+    <link rel="stylesheet" href="css/css登陆界面.css">
+    <style>
+        .audio-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .audio-control:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .audio-control img {
+            width: 25px;
+            height: 25px;
+            filter: invert(1);
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="bgMusic" src="audio/bgm3.mp3" loop></audio>
+
+    <!-- 音频控制按钮 -->
+    <div class="audio-control" onclick="toggleAudio()" id="audioControl">
+        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjUgMTJMMTAgMTVWOUwxNS41IDEyWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4LjUgMTJDMjAuNSAxMiAyMi41IDEwIDIyLjUgOEMyMi41IDYgMjAuNSA0IDE4LjUgNCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4LjUgMTJDMjAuNSAxMiAyMi41IDE0IDIyLjUgMTZDMjIuNSAxOCAyMC41IDIwIDE4LjUgMjAiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNS41IDEyQzE3LjUgMTIgMTkuNSAxMCAxOS41IDhDMTkuNSA2IDE3LjUgNCAxNS41IDQiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNS41IDEyQzE3LjUgMTIgMTkuNSAxNCAxOS41IDE2QzE5LjUgMTggMTcuNSAyMCAxNS41IDIwIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K"
+            alt="播放">
+    </div>
+
+    <section>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+        <div class="color"></div>
+
+        <div class="box">∫
+            <div class="square" style="--i:0"></div>
+            <div class="square" style="--i:1"></div>
+            <div class="square" style="--i:2"></div>
+            <div class="square" style="--i:3"></div>
+            <div class="square" style="--i:4"></div>
+            <div class="square" style="--i:5"></div>
+        </div>
+
+        <div class="container">
+            <div class="form">
+                <h2>Login Form</h2>
+                <form>
+                    <div class="inputBox">
+                        <input type="text" placeholder="Username">
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <div class="inputBox">
+                        <!-- <input type="submit" value="Login"> -->
+                        <a href="Contentpages/WLL's Gift主页面.html"><img src="images/登陆.jpg" width="150px"></a>
+                    </div>
+                    <p class="forget"> Forget password ? <a href="Contentpages/WLL's Gift忘记密码.html" target="_blank">Click
+                            here</a></p>
+                    <p class="forget"> Don't have an account ? <a href="Contentpages/WLL's Gift忘记密码.html" target="_blank">Sign
+                            up</a></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let isPlaying = false;
+        const audio = document.getElementById('bgMusic');
+        const audioControl = document.getElementById('audioControl');
+
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                audioControl.innerHTML = '<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1LjUgMTJMMTAgMTVWOUwxNS41IDEyWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4LjUgMTJDMjAuNSAxMiAyMi41IDEwIDIyLjUgOEMyMi41IDYgMjAuNSA0IDE4LjUgNCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4LjUgMTJDMjAuNSAxMiAyMi41IDE0IDIyLjUgMTZDMjIuNSAxOCAyMC41IDIwIDE4LjUgMjAiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNS41IDEyQzE3LjUgMTIgMTkuNSAxMCAxOS41IDhDMTkuNSA2IDE3LjUgNCAxNS41IDQiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNS41IDEyQzE3LjUgMTIgMTkuNSAxNCAxOS41IDE2QzE5LjUgMTggMTcuNSAyMCAxNS41IDIwIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="播放">';
+            } else {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    audioControl.innerHTML = '<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYgMTlWNUgxMFYxOUg2WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE0IDE5VjVIMThWMTlIMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="暂停">';
+                }).catch(error => {
+                    console.log('音频播放失败:', error);
+                    alert('请点击页面任意位置以启用音频播放');
+                });
+            }
+        }
+
+        // 监听页面点击事件，尝试自动播放
+        document.addEventListener('click', function () {
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    audioControl.innerHTML = '<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYgMTlWNUgxMFYxOUg2WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE0IDE5VjVIMThWMTlIMTRaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="暂停">';
+                });
+            }
+        }, { once: true });
+    </script>
+</body>
+
+</html>
